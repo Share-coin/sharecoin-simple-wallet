@@ -1,0 +1,9 @@
+node_modules/
+node-data/
+config.json
+dist/
+dist-portable/
+*.log
+
+# Private working notes, not published - see Playground's own convention.
+NOTES.md

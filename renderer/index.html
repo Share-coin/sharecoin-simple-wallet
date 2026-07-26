@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Sharecoin Wallet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Sharecoin</h1>
+    <span id="sync-pill" class="pill">Starting…</span>
+  </header>
+
+  <section id="welcome" class="card" style="display: none">
+    <div class="label">Get started</div>
+    <p class="welcome-text">Create a new wallet, or restore one from a backup file.</p>
+    <div class="button-row">
+      <button id="create-wallet-button">Create New Wallet</button>
+      <button id="welcome-restore-button" class="secondary">Restore Wallet…</button>
+    </div>
+    <div id="welcome-status" class="status-msg"></div>
+  </section>
+
+  <div id="dashboard" style="display: none">
+    <section class="card">
+      <div class="balance-row">
+        <div>
+          <div class="label">Balance</div>
+          <div id="balance-confirmed" class="balance">0.00000000 SHC</div>
+        </div>
+        <div>
+          <div class="label">Pending</div>
+          <div id="balance-pending" class="balance balance-pending">0.00000000 SHC</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="label">Your receive address</div>
+      <div class="address-row">
+        <input id="address" type="text" readonly value="" />
+        <button id="copy-address">Copy</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="label">Send</div>
+      <input id="send-to" type="text" placeholder="Recipient address" />
+      <input id="send-amount" type="number" min="0" step="0.00000001" placeholder="Amount (SHC)" />
+      <button id="send-button">Send</button>
+      <div id="send-status" class="status-msg"></div>
+    </section>
+
+    <section class="card">
+      <div class="label">Mining</div>
+      <button id="mining-toggle" class="mining-button">Start Mining</button>
+      <div id="hashrate" class="hashrate">Not mining</div>
+    </section>
+
+    <section class="card">
+      <div class="label">Wallet backup</div>
+      <div class="button-row">
+        <button id="backup-button">Backup Wallet…</button>
+        <button id="restore-button" class="secondary">Restore Wallet…</button>
+      </div>
+      <div id="backup-status" class="status-msg"></div>
+    </section>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
