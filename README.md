@@ -35,12 +35,25 @@ npm install
 npm start
 ```
 
+## Downloads
+
+Two forms are published under [Releases](https://github.com/TVHeroes/sharecoin-simple-wallet/releases):
+
+- **Zip (recommended)** - a plain folder, no installer, no self-extraction.
+  Unzip it and run `sharecoin.exe` inside. Carries proper file metadata
+  (publisher, description, version) and isn't a self-extracting exe, so
+  it's the one less likely to get flagged by antivirus heuristics.
+- **Portable exe** - a single self-extracting `sharecoin.exe`, for anyone
+  who'd rather not unzip. Some antivirus tools are more suspicious of this
+  format purely because it's self-extracting; if yours flags it, use the
+  zip instead. Either one is the same app underneath.
+
 ## Building a distributable
 
-Two build options are provided, covering different tradeoffs:
+Two build options are provided, matching the two published forms above:
 
 ```
-npm run package           # a portable app folder (dist/) - fastest to build
+npm run package           # a portable app folder (dist/) - zip it yourself for release
 npm run package:portable  # a single self-extracting sharecoin.exe (dist-portable/)
 ```
 
