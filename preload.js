@@ -14,4 +14,6 @@ contextBridge.exposeInMainWorld('sharecoin', {
   backupWallet: () => ipcRenderer.invoke('wallet:backup'),
   restoreWallet: () => ipcRenderer.invoke('wallet:restore'),
   createWallet: () => ipcRenderer.invoke('wallet:createNew'),
+  getNodeAddress: () => ipcRenderer.invoke('settings:getNodeAddress'),
+  setNodeAddress: (address) => ipcRenderer.invoke('settings:setNodeAddress', { address }),
 });

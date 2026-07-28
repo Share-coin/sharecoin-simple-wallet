@@ -19,6 +19,9 @@ const dashboardSection = document.getElementById('dashboard');
 const createWalletButton = document.getElementById('create-wallet-button');
 const welcomeRestoreButton = document.getElementById('welcome-restore-button');
 const welcomeStatus = document.getElementById('welcome-status');
+const nodeAddressInput = document.getElementById('node-address');
+const nodeAddressSaveButton = document.getElementById('node-address-save');
+const nodeAddressStatus = document.getElementById('node-address-status');
 
 let isMining = false;
 let sending = false;
@@ -182,6 +185,26 @@ createWalletButton.addEventListener('click', async () => {
     welcomeStatus.classList.add('error');
     createWalletButton.disabled = false;
     welcomeRestoreButton.disabled = false;
+  }
+});
+
+window.sharecoin.getNodeAddress().then((result) => {
+  nodeAddressInput.value = result.address || '';
+});
+
+nodeAddressSaveButton.addEventListener('click', async () => {
+  nodeAddressStatus.textContent = '';
+  nodeAddressStatus.className = 'status-msg';
+  nodeAddressSaveButton.disabled = true;
+  try {
+    await window.sharecoin.setNodeAddress(nodeAddressInput.value.trim());
+    nodeAddressStatus.textContent = 'Saved - restart the app to apply.';
+    nodeAddressStatus.classList.add('success');
+  } catch (err) {
+    nodeAddressStatus.textContent = err.message || 'Could not save.';
+    nodeAddressStatus.classList.add('error');
+  } finally {
+    nodeAddressSaveButton.disabled = false;
   }
 });
 

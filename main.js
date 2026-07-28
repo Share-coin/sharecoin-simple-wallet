@@ -80,6 +80,7 @@ app.whenReady().then(async () => {
     rpcUser: user,
     rpcPassword: password,
     walletName: config.getWalletName(),
+    customNodeAddress: config.getCustomNodeAddress(),
     log: (line) => console.log(line.toString().trimEnd()),
   });
   miner = new Miner({
@@ -122,6 +123,15 @@ app.on('before-quit', async (event) => {
   node = null;
   miner = null;
   app.quit();
+});
+
+ipcMain.handle('settings:getNodeAddress', () => {
+  return { address: config.getCustomNodeAddress() || '' };
+});
+
+ipcMain.handle('settings:setNodeAddress', (_event, { address }) => {
+  config.setCustomNodeAddress(address ? address.trim() : null);
+  return { saved: true };
 });
 
 ipcMain.handle('wallet:send', async (_event, { toAddress, amount }) => {

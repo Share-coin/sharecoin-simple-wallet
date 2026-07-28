@@ -65,6 +65,18 @@
       </div>
       <div id="backup-status" class="status-msg"></div>
     </section>
+
+    <section class="card">
+      <div class="label">Node connection</div>
+      <p class="welcome-text">
+        Optional. This app already tries several known addresses on its own,
+        this only adds one more on top - leave it blank unless you have a
+        specific node you want it to try first. Takes effect on next restart.
+      </p>
+      <input id="node-address" type="text" placeholder="e.g. 203.0.113.5:8443 (optional)" />
+      <button id="node-address-save">Save</button>
+      <div id="node-address-status" class="status-msg"></div>
+    </section>
   </div>
 
   <script src="renderer.js"></script>
