@@ -5,6 +5,7 @@ const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const { Config } = require('./lib/config');
 const { SharecoinNode } = require('./lib/node');
 const { Miner } = require('./lib/miner');
+const QRCode = require('qrcode');
 
 const RPC_PORT = 19802;
 const STATUS_POLL_MS = 5000;
@@ -132,6 +133,13 @@ ipcMain.handle('settings:getNodeAddress', () => {
 ipcMain.handle('settings:setNodeAddress', (_event, { address }) => {
   config.setCustomNodeAddress(address ? address.trim() : null);
   return { saved: true };
+});
+
+// Encodes the bare address (not a bitcoin:/sharecoin: URI) so it's readable
+// by any scanner that recognises a plain Sharecoin address, including the
+// Electrum-SHC mobile app.
+ipcMain.handle('wallet:getAddressQR', (_event, address) => {
+  return QRCode.toDataURL(address, { margin: 1, width: 240 });
 });
 
 ipcMain.handle('wallet:send', async (_event, { toAddress, amount }) => {

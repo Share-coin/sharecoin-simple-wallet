@@ -30,14 +30,25 @@
       "package.json"
     ],
     "extraResources": [
-      { "from": "resources/bin", "to": "bin" },
-      { "from": "THIRD_PARTY_LICENSES.md", "to": "THIRD_PARTY_LICENSES.md" }
+      {
+        "from": "resources/bin",
+        "to": "bin"
+      },
+      {
+        "from": "THIRD_PARTY_LICENSES.md",
+        "to": "THIRD_PARTY_LICENSES.md"
+      }
     ],
     "win": {
-      "target": ["portable"],
+      "target": [
+        "portable"
+      ],
       "icon": "resources/icon/icon.ico",
       "signAndEditExecutable": false,
       "artifactName": "sharecoin.exe"
     }
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
   }
 }

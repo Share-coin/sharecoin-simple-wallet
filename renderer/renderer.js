@@ -4,6 +4,7 @@ const syncPill = document.getElementById('sync-pill');
 const balanceConfirmedEl = document.getElementById('balance-confirmed');
 const balancePendingEl = document.getElementById('balance-pending');
 const addressEl = document.getElementById('address');
+const addressQrEl = document.getElementById('address-qr');
 const copyButton = document.getElementById('copy-address');
 const sendTo = document.getElementById('send-to');
 const sendAmount = document.getElementById('send-amount');
@@ -25,6 +26,7 @@ const nodeAddressStatus = document.getElementById('node-address-status');
 
 let isMining = false;
 let sending = false;
+let lastQrAddress = '';
 
 function formatShc(amount) {
   return `${Number(amount).toFixed(8)} SHC`;
@@ -59,6 +61,12 @@ window.sharecoin.onStatus((status) => {
   dashboardSection.style.display = '';
 
   addressEl.value = status.address || '';
+  if (status.address && status.address !== lastQrAddress) {
+    lastQrAddress = status.address;
+    window.sharecoin.generateAddressQR(status.address)
+      .then((dataUrl) => { addressQrEl.src = dataUrl; })
+      .catch(() => { addressQrEl.src = ''; });
+  }
   balanceConfirmedEl.textContent = formatShc(status.confirmed);
   balancePendingEl.textContent = formatShc(status.pending);
 

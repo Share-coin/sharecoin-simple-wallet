@@ -16,4 +16,10 @@ contextBridge.exposeInMainWorld('sharecoin', {
   createWallet: () => ipcRenderer.invoke('wallet:createNew'),
   getNodeAddress: () => ipcRenderer.invoke('settings:getNodeAddress'),
   setNodeAddress: (address) => ipcRenderer.invoke('settings:setNodeAddress', { address }),
+  // Encodes the bare address (not a bitcoin:/sharecoin: URI) so it's
+  // readable by any scanner that recognises a plain Sharecoin address,
+  // including the Electrum-SHC mobile app. QR generation happens in the
+  // main process (see main.js) since preload runs sandboxed and can't
+  // require() arbitrary npm packages like qrcode directly.
+  generateAddressQR: (address) => ipcRenderer.invoke('wallet:getAddressQR', address),
 });
