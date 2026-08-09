@@ -2,12 +2,12 @@
   "name": "sharecoin-simple-wallet",
   "version": "0.1.1",
   "description": "Simple wallet + one-click miner companion app for casual Sharecoin users",
-  "author": "TVHeroes",
+  "author": "Share-coin",
   "private": true,
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "package": "electron-packager . sharecoin --platform=win32 --arch=x64 --out=dist --overwrite --icon=resources/icon/icon.ico --app-copyright=\"Copyright (c) 2026 the Sharecoin contributors\" --win32metadata.CompanyName=\"TVHeroes\" --win32metadata.FileDescription=\"Sharecoin Simple Wallet\" --win32metadata.ProductName=\"Sharecoin Simple Wallet\" --extra-resource=resources/bin --extra-resource=THIRD_PARTY_LICENSES.md --ignore=\"^/resources($|/)\" --ignore=\"^/dist($|/)\" --ignore=\"^/dist-portable($|/)\" --ignore=\"^/old-stray-artifacts($|/)\" --ignore=\"^/node_modules($|/)\" --ignore=\"\\.zip$\" --ignore=\"^/NOTES\\.md$\" --ignore=\"^/\\.gitignore$\" --ignore=\"^/THIRD_PARTY_LICENSES\\.md$\"",
+    "package": "electron-packager . sharecoin --platform=win32 --arch=x64 --out=dist --overwrite --icon=resources/icon/icon.ico --app-copyright=\"Copyright (c) 2026 the Sharecoin contributors\" --win32metadata.CompanyName=\"Share-coin\" --win32metadata.FileDescription=\"Sharecoin Simple Wallet\" --win32metadata.ProductName=\"Sharecoin Simple Wallet\" --extra-resource=resources/bin --extra-resource=THIRD_PARTY_LICENSES.md --ignore=\"^/resources($|/)\" --ignore=\"^/dist($|/)\" --ignore=\"^/dist-portable($|/)\" --ignore=\"^/old-stray-artifacts($|/)\" --ignore=\"^/node_modules($|/)\" --ignore=\"\\.zip$\" --ignore=\"^/NOTES\\.md$\" --ignore=\"^/\\.gitignore$\" --ignore=\"^/THIRD_PARTY_LICENSES\\.md$\"",
     "package:portable": "electron-builder --win --publish=never"
   },
   "devDependencies": {

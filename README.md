@@ -37,7 +37,7 @@ npm start
 
 ## Downloads
 
-Two forms are published under [Releases](https://github.com/TVHeroes/sharecoin-simple-wallet/releases):
+Two forms are published under [Releases](https://github.com/Share-coin/sharecoin-simple-wallet/releases):
 
 - **Zip (recommended)** - a plain folder, no installer, no self-extraction.
   Unzip it and run `sharecoin.exe` inside. Carries proper file metadata
